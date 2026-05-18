@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pedro Henrique Duarte — Portfólio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0c10;--bg2:#0f1218;--bg3:#141820;
+  --green:#00ff88;--green2:#00cc6a;--green-dim:#003d22;
+  --blue:#00bfff;--blue-dim:#002a40;
+  --text:#c8d0dc;--text2:#7a8394;--text3:#4a5160;
+  --border:#1e2530;--border2:#2a3340;
+  --mono:'Share Tech Mono',monospace;--sans:'Rajdhani',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh;overflow-x:hidden}
+.scanline{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:999;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,255,136,0.015) 2px,rgba(0,255,136,0.015) 4px)}
+nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(10,12,16,0.95);backdrop-filter:blur(8px);z-index:100}
+.nav-logo{font-family:var(--mono);color:var(--green);font-size:13px;letter-spacing:2px}
+.nav-logo span{color:var(--text2)}
+.nav-links{display:flex;gap:1.5rem}
+.nav-links a{font-family:var(--mono);font-size:11px;color:var(--text2);text-decoration:none;letter-spacing:1.5px;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--green)}
+.hero{padding:5rem 2rem 4rem;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:48px 48px;opacity:.4}
+.hero-content{position:relative;z-index:1;max-width:760px;margin:0 auto}
+.hero-tag{font-family:var(--mono);font-size:11px;color:var(--green);letter-spacing:3px;margin-bottom:1rem;display:flex;align-items:center;gap:8px}
+.blink{animation:blink 1s step-end infinite}
+@keyframes blink{50%{opacity:0}}
+h1{font-family:var(--sans);font-size:60px;font-weight:700;line-height:1.05;color:#fff;margin-bottom:.5rem;letter-spacing:-1px}
+h1 span{color:var(--green)}
+.hero-sub{font-family:var(--mono);font-size:13px;color:var(--text2);margin-bottom:2rem;line-height:1.8}
+.hero-badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:2rem}
+.badge{font-family:var(--mono);font-size:10px;padding:4px 10px;border:1px solid var(--border2);border-radius:3px;color:var(--text2);letter-spacing:1px}
+.badge.active{border-color:var(--green-dim);color:var(--green);background:rgba(0,255,136,.05)}
+.hero-links{display:flex;gap:12px;flex-wrap:wrap}
+.btn{font-family:var(--mono);font-size:11px;padding:10px 20px;text-decoration:none;border-radius:3px;letter-spacing:1.5px;transition:all .2s;display:inline-flex;align-items:center;gap:6px}
+.btn-primary{background:var(--green);color:#000;font-weight:700}
+.btn-primary:hover{background:var(--green2)}
+.btn-secondary{border:1px solid var(--border2);color:var(--text2)}
+.btn-secondary:hover{border-color:var(--green);color:var(--green)}
+section{padding:4rem 2rem;border-bottom:1px solid var(--border);max-width:100%}
+.inner{max-width:900px;margin:0 auto}
+.section-label{font-family:var(--mono);font-size:10px;letter-spacing:3px;color:var(--green);text-transform:uppercase;margin-bottom:2rem;display:flex;align-items:center;gap:10px}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border)}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.project-card{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:1.75rem;transition:border-color .2s,transform .2s;position:relative;overflow:hidden}
+.project-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--green),transparent);opacity:0;transition:opacity .2s}
+.project-card:hover{border-color:var(--border2);transform:translateY(-3px)}
+.project-card:hover::before{opacity:1}
+.project-num{font-family:var(--mono);font-size:10px;color:var(--text3);margin-bottom:1rem;letter-spacing:2px}
+.project-title{font-family:var(--sans);font-size:22px;font-weight:700;color:#fff;margin-bottom:.75rem;line-height:1.2}
+.project-desc{font-size:15px;color:var(--text2);line-height:1.7;margin-bottom:1.25rem}
+.project-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.25rem}
+.tag{font-family:var(--mono);font-size:9px;padding:3px 8px;background:var(--bg3);border:1px solid var(--border2);border-radius:2px;color:var(--text2);letter-spacing:1px}
+.project-link{font-family:var(--mono);font-size:10px;color:var(--green);text-decoration:none;letter-spacing:1.5px;display:inline-flex;align-items:center;gap:6px;transition:color .2s}
+.project-link:hover{color:var(--green2)}
+.project-arrow{transition:transform .2s;display:inline-block}
+.project-link:hover .project-arrow{transform:translateX(4px)}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.skill-group{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:1.4rem}
+.skill-group-title{font-family:var(--mono);font-size:10px;color:var(--blue);letter-spacing:2px;margin-bottom:1rem;text-transform:uppercase}
+.skill-item{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.skill-name{font-size:13px;color:var(--text);font-family:var(--mono)}
+.skill-bar{width:90px;height:4px;background:var(--border2);border-radius:2px;overflow:hidden}
+.skill-fill{height:100%;background:var(--green);border-radius:2px;width:0;transition:width 1s ease-out}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
+.about-text{font-size:16px;color:var(--text2);line-height:1.9}
+.about-text strong{color:#fff}
+.about-stats{display:flex;flex-direction:column;gap:12px}
+.stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:1.1rem 1.4rem;display:flex;align-items:center;gap:14px;transition:border-color .2s}
+.stat-card:hover{border-color:var(--border2)}
+.stat-num{font-family:var(--mono);font-size:28px;color:var(--green);font-weight:700;min-width:48px}
+.stat-label{font-size:13px;color:var(--text2);line-height:1.5}
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}
+.cert-item{background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:.9rem 1.1rem;display:flex;justify-content:space-between;align-items:center;font-size:13px}
+.cert-name{color:var(--text)}
+.cert-source{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:1px}
+.contact-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.contact-item{font-family:var(--mono);font-size:11px;color:var(--text2);display:flex;align-items:center;gap:8px;padding:9px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color .2s,color .2s;letter-spacing:.5px}
+.contact-item:hover{border-color:var(--green);color:var(--green)}
+footer{padding:2rem;text-align:center;font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:2px}
+@media(max-width:700px){
+  h1{font-size:38px}
+  .about-grid{grid-template-columns:1fr}
+  nav{padding:.8rem 1rem}
+  .nav-links{gap:.8rem}
+  .hero{padding:3rem 1rem 2.5rem}
+  section{padding:2.5rem 1rem}
+}
+</style>
+</head>
+<body>
+
+<div class="scanline"></div>
+
+<nav>
+  <div class="nav-logo"><span>//</span> phdo.sec</div>
+  <div class="nav-links">
+    <a href="#projetos">projetos</a>
+    <a href="#skills">skills</a>
+    <a href="#sobre">sobre</a>
+    <a href="#contato">contato</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag"><span class="blink">▌</span> DISPONÍVEL PARA OPORTUNIDADES</div>
+    <h1>Pedro <span>Henrique</span><br>Duarte</h1>
+    <div class="hero-sub">
+      Estudante de Defesa Cibernética · Desenvolvedor de ferramentas de segurança<br>
+      Faculdade Impacta Tecnologia — São Paulo, SP
+    </div>
+    <div class="hero-badges">
+      <span class="badge active">Segurança da Informação</span>
+      <span class="badge active">Python</span>
+      <span class="badge active">Pentest</span>
+      <span class="badge">Suporte Técnico</span>
+      <span class="badge">Linux</span>
+      <span class="badge">Redes</span>
+    </div>
+    <div class="hero-links">
+      <a class="btn btn-primary" href="https://github.com/Pedroduarte23" target="_blank">GitHub ↗</a>
+      <a class="btn btn-secondary" href="https://www.linkedin.com/in/pedro-henrique-45277a357/" target="_blank">LinkedIn</a>
+      <a class="btn btn-secondary" href="mailto:pedrohenriqueduarte764@gmail.com">Contato</a>
+    </div>
+  </div>
+</section>
+
+<section id="projetos">
+  <div class="inner">
+    <div class="section-label">// projetos</div>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-num">PROJECT_01</div>
+        <div class="project-title">Detector de Ataques de Força Bruta</div>
+        <div class="project-desc">Ferramenta para monitoramento de tentativas de login em sistemas Linux. Analisa logs de autenticação, identifica padrões suspeitos por IP e dispara alertas automáticos ao exceder o limite configurado.</div>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Linux</span>
+          <span class="tag">Log Analysis</span>
+          <span class="tag">/var/log/auth.log</span>
+          <span class="tag">Security</span>
+        </div>
+        <a class="project-link" href="https://github.com/Pedroduarte23/bruteforce-log-detector" target="_blank">
+          Ver no GitHub <span class="project-arrow">→</span>
+        </a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">PROJECT_02</div>
+        <div class="project-title">Scanner de Vulnerabilidades</div>
+        <div class="project-desc">Ferramenta de varredura de rede para identificação de portas abertas e serviços ativos em hosts-alvo via sockets. Gera relatórios de exposição e auxilia na análise de riscos em ambientes controlados.</div>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Sockets</span>
+          <span class="tag">Network Scan</span>
+          <span class="tag">Risk Analysis</span>
+          <span class="tag">Recon</span>
+        </div>
+        <a class="project-link" href="https://github.com/Pedroduarte23/scanner-de-vulnerabilidades-python" target="_blank">
+          Ver no GitHub <span class="project-arrow">→</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="inner">
+    <div class="section-label">// habilidades técnicas</div>
+    <div class="skills-grid">
+
+      <div class="skill-group">
+        <div class="skill-group-title">Segurança</div>
+        <div class="skill-item"><span class="skill-name">Kali Linux</span><div class="skill-bar"><div class="skill-fill" data-width="70"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Wireshark</span><div class="skill-bar"><div class="skill-fill" data-width="65"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Nmap</span><div class="skill-bar"><div class="skill-fill" data-width="70"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Pentest</span><div class="skill-bar"><div class="skill-fill" data-width="55"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Log Analysis</span><div class="skill-bar"><div class="skill-fill" data-width="75"></div></div></div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">Desenvolvimento</div>
+        <div class="skill-item"><span class="skill-name">Python</span><div class="skill-bar"><div class="skill-fill" data-width="65"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Git / GitHub</span><div class="skill-bar"><div class="skill-fill" data-width="70"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Bash / Shell</span><div class="skill-bar"><div class="skill-fill" data-width="55"></div></div></div>
+        <div class="skill-item"><span class="skill-name">HTML / CSS</span><div class="skill-bar"><div class="skill-fill" data-width="50"></div></div></div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">Infraestrutura</div>
+        <div class="skill-item"><span class="skill-name">Linux Ubuntu</span><div class="skill-bar"><div class="skill-fill" data-width="65"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Windows</span><div class="skill-bar"><div class="skill-fill" data-width="75"></div></div></div>
+        <div class="skill-item"><span class="skill-name">TCP/IP / DNS</span><div class="skill-bar"><div class="skill-fill" data-width="65"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Hardware</span><div class="skill-bar"><div class="skill-fill" data-width="70"></div></div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="inner">
+    <div class="section-label">// sobre mim</div>
+    <div class="about-grid">
+      <div class="about-text">
+        Estudante de <strong>Tecnólogo em Defesa Cibernética</strong> na Faculdade Impacta Tecnologia (conclusão 2028), com experiência prática no desenvolvimento de ferramentas de segurança e análise de logs.<br><br>
+        Tenho background em suporte técnico e atendimento corporativo, o que me dá uma visão equilibrada entre o lado técnico e o humano da segurança da informação.<br><br>
+        Busco minha primeira oportunidade em TI — como <strong>Auxiliar de TI, Help Desk ou Estagiário em Segurança da Informação</strong> — para crescer em ambiente corporativo e continuar evoluindo na área de cibersegurança.
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-num">2</div>
+          <div class="stat-label">Projetos próprios de cibersegurança publicados no GitHub</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">8+</div>
+          <div class="stat-label">Certificações e cursos técnicos concluídos</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">1.5</div>
+          <div class="stat-label">Anos de experiência profissional (Wintress)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">SP</div>
+          <div class="stat-label">São Paulo — disponibilidade imediata</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certs">
+  <div class="inner">
+    <div class="section-label">// certificações</div>
+    <div class="certs-grid">
+      <div class="cert-item"><span class="cert-name">AI-900 — Fundamentos de IA no Azure</span><span class="cert-source">MICROSOFT</span></div>
+      <div class="cert-item"><span class="cert-name">Fundamentos de TI: Hardware e Software</span><span class="cert-source">BRADESCO</span></div>
+      <div class="cert-item"><span class="cert-name">Segurança em Tecnologia da Informação</span><span class="cert-source">BRADESCO</span></div>
+      <div class="cert-item"><span class="cert-name">Python — Programando com a Linguagem</span><span class="cert-source">IMPACTA</span></div>
+      <div class="cert-item"><span class="cert-name">Pentest — Segurança Ofensiva</span><span class="cert-source">ALURA</span></div>
+      <div class="cert-item"><span class="cert-name">Segurança de Redes</span><span class="cert-source">ALURA</span></div>
+      <div class="cert-item"><span class="cert-name">HTML, CSS e JavaScript</span><span class="cert-source">BRADESCO</span></div>
+      <div class="cert-item"><span class="cert-name">Pacote Office Intermediário</span><span class="cert-source">SENAI</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="inner">
+    <div class="section-label">// contato</div>
+    <div class="contact-row">
+      <a class="contact-item" href="mailto:pedrohenriqueduarte764@gmail.com">✉ pedrohenriqueduarte764@gmail.com</a>
+      <a class="contact-item" href="https://github.com/Pedroduarte23" target="_blank">⌥ github.com/Pedroduarte23</a>
+      <a class="contact-item" href="https://www.linkedin.com/in/pedro-henrique-45277a357/" target="_blank">◈ LinkedIn</a>
+      <span class="contact-item">☏ (11) 96252-2006</span>
+    </div>
+  </div>
+</section>
+
+<footer>PEDRO HENRIQUE DUARTE DE OLIVEIRA &nbsp;·&nbsp; SÃO PAULO, SP &nbsp;·&nbsp; DEFESA CIBERNÉTICA &nbsp;·&nbsp; 2025</footer>
+
+<script>
+// Animate skill bars on scroll
+const fills = document.querySelectorAll('.skill-fill');
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      const w = e.target.getAttribute('data-width');
+      e.target.style.width = w + '%';
+    }
+  });
+}, {threshold: 0.3});
+fills.forEach(f => obs.observe(f));
+</script>
+</body>
+</html>
